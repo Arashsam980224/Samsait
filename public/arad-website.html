@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دنیای آراد - سایت آموزشی و تفریحی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { font-family: 'Vazirmatn', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+        .animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.5s ease-out forwards; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50 to-pink-50">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg border-b-4 border-purple-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('home')">
+                    <span class="text-3xl animate-bounce-slow">🌟</span>
+                    <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">دنیای آراد</span>
+                </div>
+                <div class="hidden md:flex items-center gap-1">
+                    <button onclick="scrollToSection('home')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-purple-100 hover:text-purple-700 transition-all">🏠 خانه</button>
+                    <button onclick="scrollToSection('education')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-purple-100 hover:text-purple-700 transition-all">📚 آموزش</button>
+                    <button onclick="scrollToSection('fun')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-purple-100 hover:text-purple-700 transition-all">🎮 سرگرمی</button>
+                    <button onclick="scrollToSection('management')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-purple-100 hover:text-purple-700 transition-all">📋 مدیریت</button>
+                    <button onclick="scrollToSection('shop')" class="nav-btn px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-purple-100 hover:text-purple-700 transition-all">🛍️ فروشگاه</button>
+                </div>
+                <button class="md:hidden p-2 rounded-lg bg-purple-100 text-purple-700" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t shadow-xl">
+            <div class="px-4 py-3 space-y-2">
+                <button onclick="scrollToSection('home')" class="w-full text-right px-4 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-purple-50">🏠 خانه</button>
+                <button onclick="scrollToSection('education')" class="w-full text-right px-4 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-purple-50">📚 آموزش</button>
+                <button onclick="scrollToSection('fun')" class="w-full text-right px-4 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-purple-50">🎮 سرگرمی</button>
+                <button onclick="scrollToSection('management')" class="w-full text-right px-4 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-purple-50">📋 مدیریت</button>
+                <button onclick="scrollToSection('shop')" class="w-full text-right px-4 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-purple-50">🛍️ فروشگاه</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 right-10 text-6xl animate-float opacity-30">⭐</div>
+            <div class="absolute top-40 left-20 text-5xl animate-float opacity-30" style="animation-delay:1s">🌟</div>
+            <div class="absolute bottom-40 right-20 text-4xl animate-float opacity-30" style="animation-delay:0.5s">✨</div>
+            <div class="absolute bottom-20 left-10 text-5xl animate-float opacity-30" style="animation-delay:1.5s">💫</div>
+        </div>
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <div class="mb-8 relative inline-block">
+                <div class="w-40 h-40 md:w-52 md:h-52 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 p-1 mx-auto shadow-2xl">
+                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-7xl md:text-8xl">👦</div>
+                </div>
+                <div class="absolute -top-2 -right-2 text-4xl animate-sparkle">🚀</div>
+                <div class="absolute -bottom-2 -left-2 text-3xl animate-bounce-slow">🎓</div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-4">
+                <span class="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">سلام! من آراد هستم</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-6 font-medium">دانش‌آموز کلاس دوم دبستان 📚</p>
+            <p class="text-lg text-gray-500 mb-8 max-w-2xl mx-auto leading-relaxed">به دنیای رنگارنگ من خوش آمدید! 🌈 اینجا پر از بازی، یادگیری، خلاقیت و ماجراجویی است!</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg card-hover">
+                    <div class="text-3xl mb-2">📖</div>
+                    <div class="text-2xl font-bold text-purple-600">۱۲</div>
+                    <div class="text-sm text-gray-500">کتاب خوانده</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg card-hover">
+                    <div class="text-3xl mb-2">🏆</div>
+                    <div class="text-2xl font-bold text-orange-500">۸</div>
+                    <div class="text-sm text-gray-500">جایزه کسب کرده</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg card-hover">
+                    <div class="text-3xl mb-2">🎨</div>
+                    <div class="text-2xl font-bold text-pink-500">۲۵</div>
+                    <div class="text-sm text-gray-500">نقاشی کشیده</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg card-hover">
+                    <div class="text-3xl mb-2">⭐</div>
+                    <div class="text-2xl font-bold text-yellow-500">۱۵۰</div>
+                    <div class="text-sm text-gray-500">ستاره جمع کرده</div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#education" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">🚀 شروع یادگیری</a>
+                <a href="#fun" class="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">🎮 بازی و سرگرمی</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="min-h-screen py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">📚 بخش آموزشی</span>
+                </h2>
+                <p class="text-lg text-gray-600">با بازی و سرگرمی یاد بگیر!</p>
+            </div>
+            <div id="eduContent">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <button onclick="startQuiz('math')" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">🔢</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">ریاضی</h3>
+                        <p class="text-gray-500">جمع، تفریق و ضرب را تمرین کن!</p>
+                    </button>
+                    <button onclick="startQuiz('letters')" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-green-400 to-emerald-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">📝</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">فارسی</h3>
+                        <p class="text-gray-500">حروف و کلمات فارسی را یاد بگیر!</p>
+                    </button>
+                    <button onclick="startQuiz('science')" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">🔬</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">علوم</h3>
+                        <p class="text-gray-500">دنیای اطرافت را کشف کن!</p>
+                    </button>
+                </div>
+            </div>
+            <div id="quizContent" class="hidden"></div>
+        </div>
+    </section>
+
+    <!-- Fun Section -->
+    <section id="fun" class="min-h-screen py-20 px-4 bg-gradient-to-b from-green-50 to-blue-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent">🎮 بخش سرگرمی</span>
+                </h2>
+                <p class="text-lg text-gray-600">وقت بازی و خنده!</p>
+            </div>
+            <div id="funContent">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <button onclick="startMemoryGame()" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-pink-400 to-rose-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">🧠</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">بازی حافظه</h3>
+                        <p class="text-gray-500">کارت‌های یکسان را پیدا کن!</p>
+                    </button>
+                    <button onclick="startColorGame()" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">🎨</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">حدس رنگ</h3>
+                        <p class="text-gray-500">رنگ درست را انتخاب کن!</p>
+                    </button>
+                    <button onclick="startWordGame()" class="bg-white rounded-3xl p-8 shadow-xl card-hover transition-all duration-300 text-center group">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-green-400 to-teal-400 flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">🔤</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">حدس کلمه</h3>
+                        <p class="text-gray-500">کلمه مخفی را حدس بزن!</p>
+                    </button>
+                </div>
+            </div>
+            <div id="gameContent" class="hidden"></div>
+        </div>
+    </section>
+
+    <!-- Management Section -->
+    <section id="management" class="min-h-screen py-20 px-4 bg-gradient-to-b from-purple-50 to-indigo-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">📋 بخش مدیریت</span>
+                </h2>
+                <p class="text-lg text-gray-600">یاد بگیر چطور وقت و پولت رو مدیریت کنی!</p>
+            </div>
+            <div class="flex justify-center gap-3 mb-8 flex-wrap">
+                <button onclick="showManagementTab('schedule')" id="tab-schedule" class="mgmt-tab px-6 py-3 rounded-full font-bold bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg">📅 برنامه روزانه</button>
+                <button onclick="showManagementTab('tasks')" id="tab-tasks" class="mgmt-tab px-6 py-3 rounded-full font-bold bg-white text-gray-600 hover:bg-purple-100 shadow">✅ کارها</button>
+                <button onclick="showManagementTab('money')" id="tab-money" class="mgmt-tab px-6 py-3 rounded-full font-bold bg-white text-gray-600 hover:bg-purple-100 shadow">💰 پول توجیبی</button>
+            </div>
+            <div id="mgmtContent"></div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="min-h-screen py-20 px-4 bg-gradient-to-b from-orange-50 to-pink-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">🛍️ فروشگاه آراد</span>
+                </h2>
+                <p class="text-lg text-gray-600">آثار هنری و آموزشی دست‌ساز من!</p>
+                <div class="mt-4 inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold">💰 درآمد این ماه: ۴۵,۰۰۰ تومان</div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="shopGrid"></div>
+            <div class="mt-12 bg-white rounded-3xl p-8 shadow-xl">
+                <h3 class="text-2xl font-bold mb-6 text-center">💰 گزارش درآمد</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl p-6 text-center text-white">
+                        <div class="text-3xl mb-2">💵</div>
+                        <div class="text-2xl font-bold">۴۵,۰۰۰</div>
+                        <div class="text-sm opacity-80">درآمد این ماه (تومان)</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl p-6 text-center text-white">
+                        <div class="text-3xl mb-2">📦</div>
+                        <div class="text-2xl font-bold">۱۲</div>
+                        <div class="text-sm opacity-80">تعداد فروش</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl p-6 text-center text-white">
+                        <div class="text-3xl mb-2">⭐</div>
+                        <div class="text-2xl font-bold">۴.۸</div>
+                        <div class="text-sm opacity-80">امتیاز مشتریان</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🌟 دنیای آراد</h3>
+                    <p class="text-white/80 text-sm leading-relaxed">یک سایت شخصی آموزشی-تفریحی برای یادگیری بهتر و سرگرمی بیشتر.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">🔗 لینک‌های سریع</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-white/80 hover:text-white">🏠 خانه</a></li>
+                        <li><a href="#education" class="text-white/80 hover:text-white">📚 آموزش</a></li>
+                        <li><a href="#fun" class="text-white/80 hover:text-white">🎮 سرگرمی</a></li>
+                        <li><a href="#management" class="text-white/80 hover:text-white">📋 مدیریت</a></li>
+                        <li><a href="#shop" class="text-white/80 hover:text-white">🛍️ فروشگاه</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">📬 ارتباط با ما</h3>
+                    <div class="space-y-2 text-white/80 text-sm">
+                        <p>📧 ایمیل: arad@example.com</p>
+                        <p>📱 تلفن: ۰۹۱۲-XXX-XXXX</p>
+                        <p>📍 شهر: تهران</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-6 text-center">
+                <p class="text-white/60 text-sm">🌈 ساخته شده با ❤️ توسط آراد و خانواده‌اش | ۱۴۰۳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('mobileMenu').classList.add('hidden');
+        }
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ===== EDUCATION =====
+        const questions = {
+            math: [
+                { q: '۵ + ۳ = ؟', options: ['۶', '۷', '۸', '۹'], correct: 2 },
+                { q: '۱۰ - ۴ = ؟', options: ['۵', '۶', '۷', '۸'], correct: 1 },
+                { q: '۲ × ۳ = ؟', options: ['۵', '۶', '۷', '۸'], correct: 1 },
+                { q: '۹ - ۲ = ؟', options: ['۵', '۶', '۷', '۸'], correct: 2 },
+                { q: '۴ + ۴ = ؟', options: ['۶', '۷', '۸', '۹'], correct: 2 },
+            ],
+            letters: [
+                { q: 'کدام حرف صدادار است؟', options: ['ب', 'ا', 'ت', 'س'], correct: 1 },
+                { q: 'اولین حرف الفبا کدام است؟', options: ['ب', 'پ', 'ا', 'ت'], correct: 2 },
+                { q: 'کلمه "مادر" چند حرف دارد؟', options: ['۳', '۴', '۵', '۶'], correct: 1 },
+                { q: 'کدام کلمه با "آ" شروع می‌شود؟', options: ['بابا', 'آسمان', 'توپ', 'سیب'], correct: 1 },
+                { q: '"کتاب" جمع آن کدام است؟', options: ['کتابها', 'کتابات', 'کتب', 'کتابان'], correct: 0 },
+            ],
+            science: [
+                { q: 'خورشید یک ... است', options: ['سیاره', 'ستاره', 'ماه', 'ابَر'], correct: 1 },
+                { q: 'چند فصل در سال داریم؟', options: ['۲', '۳', '۴', '۵'], correct: 2 },
+                { q: 'آب در چه دمایی یخ می‌زند؟', options: ['۱۰ درجه', '۰ درجه', '۵ درجه', '۲۰ درجه'], correct: 1 },
+                { q: 'کدام حیوان پرنده است؟', options: ['ماهی', 'گربه', 'عقاب', 'مار'], correct: 2 },
+                { q: 'رنگین‌کمان چند رنگ دارد؟', options: ['۵', '۶', '۷', '۸'], correct: 2 },
+            ]
+        };
+
+        let currentQuiz = null;
+        let quizIndex = 0;
+        let quizScore = 0;
+
+        function startQuiz(type) {
+            currentQuiz = type;
+            quizIndex = 0;
+            quizScore = 0;
+            document.getElementById('eduContent').classList.add('hidden');
+            document.getElementById('quizContent').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const qs = questions[currentQuiz];
+            const q = qs[quizIndex];
+            let html = `
+                <div class="bg-white rounded-3xl p-8 shadow-xl max-w-lg mx-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-sm text-gray-500">سوال ${quizIndex + 1} از ${qs.length}</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-bold">⭐ ${quizScore} امتیاز</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-6">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-500" style="width:${((quizIndex + 1) / qs.length) * 100}%"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-8">${q.q}</h3>
+                    <div class="grid grid-cols-2 gap-4">
+            `;
+            q.options.forEach((opt, i) => {
+                html += `<button onclick="answerQuiz(${i})" class="quiz-opt p-4 rounded-2xl text-lg font-bold bg-gray-100 hover:bg-purple-100 hover:scale-105 text-gray-700 transition-all">${opt}</button>`;
+            });
+            html += `</div><div id="quizFeedback"></div>
+                <button onclick="backToEdu()" class="mt-6 text-sm text-gray-400 hover:text-gray-600 underline">بازگشت به انتخاب بازی</button>
+                </div>`;
+            document.getElementById('quizContent').innerHTML = html;
+        }
+
+        function answerQuiz(index) {
+            const qs = questions[currentQuiz];
+            const correct = index === qs[quizIndex].correct;
+            if (correct) quizScore++;
+            
+            const btns = document.querySelectorAll('.quiz-opt');
+            btns.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === qs[quizIndex].correct) btn.className = 'quiz-opt p-4 rounded-2xl text-lg font-bold bg-green-100 text-green-700 scale-105 transition-all';
+                else if (i === index && !correct) btn.className = 'quiz-opt p-4 rounded-2xl text-lg font-bold bg-red-100 text-red-700 transition-all';
+                else btn.className = 'quiz-opt p-4 rounded-2xl text-lg font-bold bg-gray-100 text-gray-400 transition-all';
+            });
+
+            document.getElementById('quizFeedback').innerHTML = `<div class="mt-6 text-center text-xl font-bold animate-slide-in ${correct ? 'text-green-500' : 'text-red-500'}">${correct ? '✅ آفرین! درست بود!' : '❌ اشتباه بود!'}</div>`;
+
+            setTimeout(() => {
+                if (quizIndex < qs.length - 1) {
+                    quizIndex++;
+                    showQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 1500);
+        }
+
+        function showQuizResult() {
+            const total = questions[currentQuiz].length;
+            const emoji = quizScore >= 4 ? '🏆' : quizScore >= 3 ? '⭐' : '💪';
+            const msg = quizScore >= 4 ? 'عالی بود!' : quizScore >= 3 ? 'آفرین!' : 'تلاش کن!';
+            document.getElementById('quizContent').innerHTML = `
+                <div class="bg-white rounded-3xl p-8 shadow-xl max-w-md mx-auto text-center">
+                    <div class="text-6xl mb-4">${emoji}</div>
+                    <h3 class="text-2xl font-bold mb-2">${msg}</h3>
+                    <p class="text-xl text-gray-600 mb-4">امتیاز تو: ${quizScore} از ${total}</p>
+                    <button onclick="backToEdu()" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold hover:scale-105 transition-all">🔄 بازی جدید</button>
+                </div>`;
+        }
+
+        function backToEdu() {
+            document.getElementById('eduContent').classList.remove('hidden');
+            document.getElementById('quizContent').classList.add('hidden');
+        }
+
+        // ===== FUN GAMES =====
+        // Memory Game
+        function startMemoryGame() {
+            document.getElementById('funContent').classList.add('hidden');
+            document.getElementById('gameContent').classList.remove('hidden');
+            initMemoryGame();
+        }
+
+        let memoryCards = [];
+        let memoryFlipped = [];
+        let memoryMatched = [];
+        let memoryMoves = 0;
+
+        function initMemoryGame() {
+            const emojis = ['🐶', '🐱', '🐼', '🦊', '🐸', '🦋'];
+            memoryCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+            memoryFlipped = [];
+            memoryMatched = [];
+            memoryMoves = 0;
+            renderMemoryGame();
+        }
+
+        function renderMemoryGame() {
+            let html = `
+                <div class="bg-white rounded-3xl p-8 shadow-xl max-w-md mx-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold">🧠 بازی حافظه</h3>
+                        <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">حرکات: ${memoryMoves}</span>
+                    </div>`;
+            if (memoryMatched.length === memoryCards.length) {
+                html += `<div class="text-center mb-4 animate-slide-in"><span class="text-4xl">🎉</span><p class="text-xl font-bold text-green-600">آفرین! بردی!</p></div>`;
+            }
+            html += `<div class="grid grid-cols-4 gap-3">`;
+            memoryCards.forEach((emoji, i) => {
+                const show = memoryFlipped.includes(i) || memoryMatched.includes(i);
+                html += `<button onclick="flipCard(${i})" class="aspect-square rounded-2xl text-3xl flex items-center justify-center transition-all duration-300 ${show ? 'bg-purple-100 scale-105' : 'bg-gradient-to-r from-purple-400 to-pink-400 hover:scale-105'}">${show ? emoji : '❓'}</button>`;
+            });
+            html += `</div><button onclick="initMemoryGame()" class="mt-6 w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold hover:scale-105 transition-all">🔄 بازی جدید</button>
+                <button onclick="backToFun()" class="mt-3 w-full py-2 text-gray-400 hover:text-gray-600 underline text-sm">بازگشت</button></div>`;
+            document.getElementById('gameContent').innerHTML = html;
+        }
+
+        function flipCard(index) {
+            if (memoryFlipped.length === 2 || memoryFlipped.includes(index) || memoryMatched.includes(index)) return;
+            memoryFlipped.push(index);
+            renderMemoryGame();
+            if (memoryFlipped.length === 2) {
+                memoryMoves++;
+                if (memoryCards[memoryFlipped[0]] === memoryCards[memoryFlipped[1]]) {
+                    memoryMatched.push(...memoryFlipped);
+                    memoryFlipped = [];
+                    setTimeout(renderMemoryGame, 500);
+                } else {
+                    setTimeout(() => { memoryFlipped = []; renderMemoryGame(); }, 1000);
+                }
+            }
+        }
+
+        // Color Game
+        const colors = [
+            { name: 'قرمز', color: 'bg-red-500' },
+            { name: 'آبی', color: 'bg-blue-500' },
+            { name: 'سبز', color: 'bg-green-500' },
+            { name: 'زرد', color: 'bg-yellow-400' },
+            { name: 'بنفش', color: 'bg-purple-500' },
+            { name: 'نارنجی', color: 'bg-orange-500' },
+        ];
+        let colorTarget = 0;
+        let colorOptions = [];
+        let colorScore = 0;
+        let colorFeedback = '';
+
+        function startColorGame() {
+            document.getElementById('funContent').classList.add('hidden');
+            document.getElementById('gameContent').classList.remove('hidden');
+            colorScore = 0;
+            generateColorRound();
+        }
+
+        function generateColorRound() {
+            colorTarget = Math.floor(Math.random() * colors.length);
+            colorOptions = [colorTarget];
+            while (colorOptions.length < 4) {
+                const r = Math.floor(Math.random() * colors.length);
+                if (!colorOptions.includes(r)) colorOptions.push(r);
+            }
+            colorOptions.sort(() => Math.random() - 0.5);
+            colorFeedback = '';
+            renderColorGame();
+        }
+
+        function renderColorGame() {
+            let html = `
+                <div class="bg-white rounded-3xl p-8 shadow-xl max-w-md mx-auto text-center">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold">🎨 حدس رنگ</h3>
+                        <span class="text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">⭐ ${colorScore}</span>
+                    </div>
+                    <p class="text-lg text-gray-600 mb-4">این رنگ چه نامی دارد؟</p>
+                    <div class="w-32 h-32 rounded-full mx-auto mb-8 ${colors[colorTarget].color} shadow-lg"></div>`;
+            if (colorFeedback) html += `<p class="text-xl font-bold mb-4 animate-slide-in ${colorFeedback.includes('✅') ? 'text-green-500' : 'text-red-500'}">${colorFeedback}</p>`;
+            html += `<div class="grid grid-cols-2 gap-4">`;
+            colorOptions.forEach((opt) => {
+                html += `<button onclick="guessColor(${opt})" class="p-4 rounded-2xl bg-gray-100 text-lg font-bold hover:bg-purple-100 transition-all hover:scale-105" ${colorFeedback ? 'disabled' : ''}>${colors[opt].name}</button>`;
+            });
+            html += `</div><button onclick="backToFun()" class="mt-4 text-gray-400 hover:text-gray-600 underline text-sm">بازگشت</button></div>`;
+            document.getElementById('gameContent').innerHTML = html;
+        }
+
+        function guessColor(index) {
+            if (colorFeedback) return;
+            if (index === colorTarget) {
+                colorScore++;
+                colorFeedback = '✅ آفرین!';
+            } else {
+                colorFeedback = `❌ جواب: ${colors[colorTarget].name}`;
+            }
+            renderColorGame();
+            setTimeout(generateColorRound, 1500);
+        }
+
+        // Word Game
+        const words = [
+            { word: 'سیب', hint: '🍎 یک میوه قرمز', letters: ['س', 'ی', 'ب', 'ت', 'م'] },
+            { word: 'گل', hint: '🌸 در باغچه رشد می‌کند', letters: ['گ', 'ل', 'ر', 'ن', 'د'] },
+            { word: 'ماه', hint: '🌙 شب‌ها در آسمان است', letters: ['م', 'ا', 'ه', 'ب', 'ک'] },
+            { word: 'آب', hint: '💧 وقتی تشنه‌ای می‌خوری', letters: ['آ', 'ب', 'ر', 'ن', 'س'] },
+            { word: 'توپ', hint: '⚽ با آن بازی می‌کنی', letters: ['ت', 'و', 'پ', 'د', 'ز'] },
+        ];
+        let wordIndex = 0;
+        let wordSelected = [];
+        let wordScore = 0;
+        let wordFeedback = '';
+
+        function startWordGame() {
+            document.getElementById('funContent').classList.add('hidden');
+            document.getElementById('gameContent').classList.remove('hidden');
+            wordIndex = 0;
+            wordSelected = [];
+            wordScore = 0;
+            wordFeedback = '';
+            renderWordGame();
+        }
+
+        function renderWordGame() {
+            const w = words[wordIndex];
+            let html = `
+                <div class="bg-white rounded-3xl p-8 shadow-xl max-w-md mx-auto text-center">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold">🔤 حدس کلمه</h3>
+                        <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">⭐ ${wordScore}</span>
+                    </div>
+                    <p class="text-lg text-gray-600 mb-2">${w.hint}</p>
+                    <p class="text-sm text-gray-400 mb-6">(${w.word.length} حرف)</p>
+                    <div class="flex justify-center gap-2 mb-6">`;
+            for (let i = 0; i < w.word.length; i++) {
+                html += `<div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold ${wordSelected[i] ? 'bg-purple-100 text-purple-700' : 'bg-gray-200 text-gray-400'}">${wordSelected[i] || '_'}</div>`;
+            }
+            html += `</div>`;
+            if (wordFeedback) html += `<p class="text-lg font-bold mb-4 animate-slide-in ${wordFeedback.includes('✅') ? 'text-green-500' : 'text-red-500'}">${wordFeedback}</p>`;
+            html += `<div class="flex justify-center gap-3 flex-wrap mb-6">`;
+            w.letters.forEach((letter, i) => {
+                const used = wordSelected.includes(letter);
+                html += `<button onclick="pickLetter('${letter}')" class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-400 to-cyan-400 text-white text-xl font-bold hover:scale-110 transition-all ${used ? 'opacity-50' : ''}" ${used || wordFeedback ? 'disabled' : ''}>${letter}</button>`;
+            });
+            html += `</div><div class="flex gap-3 justify-center">
+                <button onclick="resetWord()" class="px-4 py-2 bg-gray-200 rounded-full text-gray-600 hover:bg-gray-300">🔄 پاک کردن</button>`;
+            if (wordFeedback) html += `<button onclick="nextWord()" class="px-4 py-2 bg-gradient-to-r from-green-400 to-teal-400 text-white rounded-full font-bold hover:scale-105">کلمه بعدی ←</button>`;
+            html += `</div><button onclick="backToFun()" class="mt-3 text-gray-400 hover:text-gray-600 underline text-sm">بازگشت</button></div>`;
+            document.getElementById('gameContent').innerHTML = html;
+        }
+
+        function pickLetter(letter) {
+            if (wordFeedback) return;
+            const w = words[wordIndex];
+            if (wordSelected.length >= w.word.length) return;
+            wordSelected.push(letter);
+            if (wordSelected.length === w.word.length) {
+                if (wordSelected.join('') === w.word) {
+                    wordScore++;
+                    wordFeedback = '✅ آفرین! درست حدس زدی!';
+                } else {
+                    wordFeedback = `❌ جواب درست: ${w.word}`;
+                }
+            }
+            renderWordGame();
+        }
+
+        function resetWord() { wordSelected = []; wordFeedback = ''; renderWordGame(); }
+        function nextWord() { wordIndex = (wordIndex + 1) % words.length; wordSelected = []; wordFeedback = ''; renderWordGame(); }
+
+        function backToFun() {
+            document.getElementById('funContent').classList.remove('hidden');
+            document.getElementById('gameContent').classList.add('hidden');
+        }
+
+        // ===== MANAGEMENT =====
+        function showManagementTab(tab) {
+            document.querySelectorAll('.mgmt-tab').forEach(btn => {
+                btn.className = 'mgmt-tab px-6 py-3 rounded-full font-bold bg-white text-gray-600 hover:bg-purple-100 shadow';
+            });
+            document.getElementById('tab-' + tab).className = 'mgmt-tab px-6 py-3 rounded-full font-bold bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg';
+            
+            if (tab === 'schedule') renderSchedule();
+            else if (tab === 'tasks') renderTasks();
+            else if (tab === 'money') renderMoney();
+        }
+
+        function renderSchedule() {
+            const schedule = [
+                { time: '۷:۰۰', activity: 'بیدار شدن و صبحانه', emoji: '🌅', done: true },
+                { time: '۸:۰۰', activity: 'رفتن به مدرسه', emoji: '🏫', done: true },
+                { time: '۱۲:۰۰', activity: 'ناهار و استراحت', emoji: '🍽️', done: true },
+                { time: '۱۴:۰۰', activity: 'تکالیف مدرسه', emoji: '📝', done: false },
+                { time: '۱۵:۳۰', activity: 'بازی و ورزش', emoji: '⚽', done: false },
+                { time: '۱۷:۰۰', activity: 'مطالعه و نقاشی', emoji: '🎨', done: false },
+                { time: '۱۸:۳۰', activity: 'شام و خانواده', emoji: '👨‍👩‍👦', done: false },
+                { time: '۲۰:۰۰', activity: 'کتاب خواندن', emoji: '📖', done: false },
+                { time: '۲۱:۰۰', activity: 'خواب', emoji: '🌙', done: false },
+            ];
+            let html = `<div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl max-w-2xl mx-auto"><h3 class="text-2xl font-bold mb-6 text-center">📅 برنامه امروز</h3><div class="space-y-3">`;
+            schedule.forEach(item => {
+                html += `<div class="flex items-center gap-4 p-4 rounded-2xl ${item.done ? 'bg-green-50 border-2 border-green-200' : 'bg-gray-50 hover:bg-purple-50'}">
+                    <span class="text-sm font-mono text-gray-500 w-12">${item.time}</span>
+                    <span class="text-2xl">${item.emoji}</span>
+                    <span class="flex-1 font-medium ${item.done ? 'text-green-700 line-through' : 'text-gray-700'}">${item.activity}</span>
+                    ${item.done ? '<span class="text-green-500 text-xl">✓</span>' : ''}
+                </div>`;
+            });
+            html += `</div><div class="mt-6 p-4 bg-blue-50 rounded-2xl text-center"><p class="text-blue-700 font-medium">💡 نکته: هر روز برنامه‌ات رو دنبال کن تا ستاره بگیری! ⭐</p></div></div>`;
+            document.getElementById('mgmtContent').innerHTML = html;
+        }
+
+        let tasks = [
+            { id: 1, text: 'تکالیف ریاضی', done: false, reward: 2 },
+            { id: 2, text: 'خواندن کتاب داستان', done: false, reward: 1 },
+            { id: 3, text: 'مرتب کردن اتاق', done: false, reward: 3 },
+            { id: 4, text: 'تمرین نقاشی', done: false, reward: 2 },
+            { id: 5, text: 'کمک به مامان', done: false, reward: 5 },
+        ];
+
+        function renderTasks() {
+            const totalStars = tasks.filter(t => t.done).reduce((sum, t) => sum + t.reward, 0);
+            let html = `<div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl max-w-2xl mx-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">✅ لیست کارها</h3>
+                    <span class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full font-bold">⭐ ${totalStars} ستاره</span>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <input type="text" id="newTaskInput" placeholder="کار جدید اضافه کن..." class="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-400 outline-none" onkeypress="if(event.key==='Enter')addTask()">
+                    <button onclick="addTask()" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:scale-105">+</button>
+                </div>
+                <div class="space-y-3">`;
+            tasks.forEach(task => {
+                html += `<div onclick="toggleTask(${task.id})" class="flex items-center gap-4 p-4 rounded-2xl cursor-pointer transition-all ${task.done ? 'bg-green-50 border-2 border-green-200' : 'bg-gray-50 hover:bg-purple-50 border-2 border-transparent'}">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-lg ${task.done ? 'bg-green-500 text-white' : 'bg-gray-200'}">${task.done ? '✓' : ''}</div>
+                    <span class="flex-1 font-medium ${task.done ? 'text-green-700 line-through' : 'text-gray-700'}">${task.text}</span>
+                    <span class="text-yellow-500 font-bold">+${task.reward}⭐</span>
+                </div>`;
+            });
+            html += `</div><div class="mt-6 p-4 bg-purple-50 rounded-2xl text-center"><p class="text-purple-700 font-medium">🎯 هر کار رو انجام بده و ستاره جمع کن! ۱۰ ستاره = ۱ جایزه!</p></div></div>`;
+            document.getElementById('mgmtContent').innerHTML = html;
+        }
+
+        function toggleTask(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+            renderTasks();
+        }
+
+        function addTask() {
+            const input = document.getElementById('newTaskInput');
+            if (input.value.trim()) {
+                tasks.push({ id: Date.now(), text: input.value, done: false, reward: 1 });
+                renderTasks();
+            }
+        }
+
+        let balance = 5000;
+        let transactions = [
+            { id: 1, text: 'پول توجیبی هفتگی', amount: 5000, type: 'income' },
+            { id: 2, text: 'خرید دفتر', amount: 1500, type: 'expense' },
+        ];
+
+        function renderMoney() {
+            let html = `<div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6 text-center">💰 قلک من</h3>
+                <div class="bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl p-6 text-center text-white mb-6 shadow-lg">
+                    <p class="text-sm opacity-80 mb-1">موجودی قلک</p>
+                    <p class="text-4xl font-black">${balance.toLocaleString('fa-IR')} تومان</p>
+                    <p class="text-sm opacity-80 mt-2">💰 پس‌انداز کن، بزرگ بشو!</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-4 mb-6">
+                    <h4 class="font-bold mb-3">ثبت تراکنش جدید:</h4>
+                    <div class="flex gap-2 mb-3">
+                        <button onclick="setTransType('income')" id="btn-income" class="flex-1 py-2 rounded-xl font-bold bg-green-500 text-white">💚 درآمد</button>
+                        <button onclick="setTransType('expense')" id="btn-expense" class="flex-1 py-2 rounded-xl font-bold bg-gray-200 text-gray-600">❤️ خرج</button>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="transDesc" placeholder="توضیح..." class="flex-1 px-3 py-2 rounded-xl border-2 border-gray-200 focus:border-purple-400 outline-none">
+                        <input type="number" id="transAmount" placeholder="مبلغ" class="w-24 px-3 py-2 rounded-xl border-2 border-gray-200 focus:border-purple-400 outline-none">
+                        <button onclick="addTransaction()" class="px-4 py-2 bg-purple-500 text-white rounded-xl font-bold hover:bg-purple-600">+</button>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="font-bold text-gray-700 mb-2">تراکنش‌ها:</h4>`;
+            transactions.forEach(trans => {
+                html += `<div class="flex items-center justify-between p-3 rounded-xl ${trans.type === 'income' ? 'bg-green-50' : 'bg-red-50'}">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xl">${trans.type === 'income' ? '💚' : '❤️'}</span>
+                        <span class="font-medium text-gray-700">${trans.text}</span>
+                    </div>
+                    <span class="font-bold ${trans.type === 'income' ? 'text-green-600' : 'text-red-600'}">${trans.type === 'income' ? '+' : '-'}${trans.amount.toLocaleString('fa-IR')}</span>
+                </div>`;
+            });
+            html += `</div>
+                <div class="mt-6 p-4 bg-yellow-50 rounded-2xl">
+                    <h4 class="font-bold text-yellow-700 mb-2">🎯 هدف پس‌انداز:</h4>
+                    <div class="flex items-center gap-3">
+                        <div class="flex-1 bg-yellow-200 rounded-full h-4">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-400 h-4 rounded-full" style="width:${Math.min((balance / 20000) * 100, 100)}%"></div>
+                        </div>
+                        <span class="text-sm font-bold text-yellow-700">${Math.round((balance / 20000) * 100)}%</span>
+                    </div>
+                    <p class="text-xs text-yellow-600 mt-2">هدف: خرید دوچرخه (۲۰,۰۰۰ تومان)</p>
+                </div>
+            </div>`;
+            document.getElementById('mgmtContent').innerHTML = html;
+        }
+
+        let transType = 'income';
+        function setTransType(type) {
+            transType = type;
+            document.getElementById('btn-income').className = `flex-1 py-2 rounded-xl font-bold ${type === 'income' ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-600'}`;
+            document.getElementById('btn-expense').className = `flex-1 py-2 rounded-xl font-bold ${type === 'expense' ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-600'}`;
+        }
+
+        function addTransaction() {
+            const desc = document.getElementById('transDesc').value;
+            const amount = parseInt(document.getElementById('transAmount').value);
+            if (amount > 0 && desc.trim()) {
+                transactions.unshift({ id: Date.now(), text: desc, amount, type: transType });
+                balance = transType === 'income' ? balance + amount : balance - amount;
+                renderMoney();
+            }
+        }
+
+        // ===== SHOP =====
+        const products = [
+            { id: 1, title: 'نقاشی گل‌های بهاری', desc: 'نقاشی آبرنگ دست‌ساز با موضوع طبیعت', price: 15000, emoji: '🌸', category: 'نقاشی', badge: 'جدید' },
+            { id: 2, title: 'کاردستی حیوانات', desc: 'مجموعه ۵ حیوان بامزه با مقوا و کاغذ رنگی', price: 25000, emoji: '🦁', category: 'کاردستی' },
+            { id: 3, title: 'آموزش نقاشی ساده', desc: 'ویدیوی آموزش کشیدن حیوانات برای بچه‌ها', price: 10000, emoji: '🎨', category: 'آموزش', badge: 'پرفروش' },
+            { id: 4, title: 'داستان مصور من', desc: 'یک داستان کوتاه ۵ صفحه‌ای با نقاشی', price: 8000, emoji: '📖', category: 'نقاشی' },
+            { id: 5, title: 'آموزش اعداد با بازی', desc: 'بازی آموزشی جمع و تفریق برای کلاس اول و دوم', price: 12000, emoji: '🔢', category: 'آموزش' },
+            { id: 6, title: 'کارت تبریک دست‌ساز', desc: 'کارت‌های تبریک تولد و عید با طراحی کودکانه', price: 5000, emoji: '🎉', category: 'کاردستی', badge: 'محبوب' },
+        ];
+
+        function renderShop() {
+            let html = '';
+            products.forEach(p => {
+                html += `<div class="bg-white rounded-3xl overflow-hidden shadow-xl card-hover transition-all duration-300">
+                    <div class="h-40 bg-gradient-to-r from-purple-100 to-pink-100 flex items-center justify-center relative">
+                        <span class="text-7xl">${p.emoji}</span>
+                        ${p.badge ? `<span class="absolute top-3 right-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">${p.badge}</span>` : ''}
+                    </div>
+                    <div class="p-5">
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">${p.category}</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 mt-2">${p.title}</h3>
+                        <p class="text-sm text-gray-500 mb-4">${p.desc}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-black text-green-600">${p.price.toLocaleString('fa-IR')} تومان</span>
+                            <button onclick="addToCart(${p.id})" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-sm hover:scale-105 transition-all">🛒 افزودن</button>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('shopGrid').innerHTML = html;
+        }
+
+        let cart = [];
+        function addToCart(id) {
+            cart.push(id);
+            alert('✅ به سبد خرید اضافه شد!');
+        }
+
+        // Initialize
+        renderSchedule();
+        renderShop();
+    </script>
+</body>
+</html>
